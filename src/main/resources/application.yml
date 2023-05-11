@@ -1,0 +1,23 @@
+server:
+  port: 8087
+  error:
+    include-message: always
+spring:
+  application:
+    name: partner-point-service
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL10Dialect
+  #    generate-ddl: false
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+  servlet:
+    multipart:
+      maxFileSize: 10MB
+      maxRequestSize: 50MB
