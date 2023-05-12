@@ -4,10 +4,7 @@ import lombok.*;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
@@ -26,8 +23,14 @@ public class Product {
             strategy = "org.hibernate.id.UUIDGenerator"
     )
     private UUID id;
-    private Long code; // Код продукта
-    private String name; // Название
+    private Long code; // Material_No
+    private String name; // Material_Desc_RUS
+    @ManyToOne
+    @JoinColumn(name = "category_id",nullable = false)
+    private ProductCategory category;
+    /*
     private Long categoryCode; // Категория  ?
     private String categoryName; // Брэнд ?
+
+     */
 }

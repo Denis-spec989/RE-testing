@@ -23,8 +23,10 @@ public class Price {
             strategy = "org.hibernate.id.UUIDGenerator"
     )
     private UUID id;
-    private String groceryChainName;
+    private Double regularPrice; //Regular price per unit
     @ManyToOne
-    private Product product; //связь Цена для каждой сети разная Один продукт много цен
-    private Double defaultPrice;
+    private Customer customer; //
+    @ManyToOne
+    private Product product; //
+
 }

@@ -5,18 +5,18 @@ import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table(name = "shipments")
+@Table(name = "product_categories")
 @Getter
 @Setter
 @DynamicUpdate
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Shipment {
+public class ProductCategory {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(
@@ -24,15 +24,8 @@ public class Shipment {
             strategy = "org.hibernate.id.UUIDGenerator"
     )
     private UUID id;
-    private Date date; // Date
-    private Double saleValue; // Actual Sales Value
-    private Long units; // Volume, units
-    @OneToOne
-    private Product product;
-    @OneToOne
-    private Address address;
-    @OneToOne
-    private Customer customer;
-
-
+    private Long code;
+    private String name;
+    @OneToMany(mappedBy = "category")
+    private List<Product> products;
 }
