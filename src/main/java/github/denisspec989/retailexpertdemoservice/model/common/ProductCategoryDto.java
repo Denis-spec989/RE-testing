@@ -1,4 +1,4 @@
-package github.denisspec989.retailexpertdemoservice.model;
+package github.denisspec989.retailexpertdemoservice.model.common;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -25,8 +25,8 @@ public class Price {
     private UUID id;
     private Double regularPrice; //Regular price per unit
     @ManyToOne
-    private Customer customer; //
+    private Customer customer;
     @ManyToOne
-    private Product product; //
+    private Product product;
 
 }
