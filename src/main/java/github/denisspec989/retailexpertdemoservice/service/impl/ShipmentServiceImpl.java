@@ -2,6 +2,7 @@ package github.denisspec989.retailexpertdemoservice.service.impl;
 
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.Predicate;
+import github.denisspec989.retailexpertdemoservice.entity.PromotionSign;
 import github.denisspec989.retailexpertdemoservice.entity.QShipment;
 import github.denisspec989.retailexpertdemoservice.model.shipment.ShipmentDto;
 import github.denisspec989.retailexpertdemoservice.repository.ShipmentRepository;
@@ -28,7 +29,7 @@ public class ShipmentServiceImpl implements ShipmentService {
     @SneakyThrows
     @Override
     @Transactional
-    public Page<ShipmentDto> getShipmentsFilteredAndPaginated(Pageable pageable, List<String> groceryChainNames, List<Long> productCodes,String date) {
+    public Page<ShipmentDto> getShipmentsFilteredAndPaginated(Pageable pageable, List<String> groceryChainNames, List<Long> productCodes,String date, PromotionSign promotionSign) {
         BooleanBuilder predicate = new BooleanBuilder();
         if(!groceryChainNames.isEmpty()){
             List<Predicate> predicateTypes = new ArrayList<>();
@@ -55,6 +56,9 @@ public class ShipmentServiceImpl implements ShipmentService {
             predicate.and(QShipment.shipment.date.year().eq(calendar.get(Calendar.YEAR)));
             predicate.and(QShipment.shipment.date.month().eq(calendar.get(Calendar.MONTH)));
             predicate.and(QShipment.shipment.date.dayOfMonth().eq(calendar.get(Calendar.DAY_OF_MONTH)));
+        }
+        if(promotionSign!=null){
+            predicate.and(QShipment.shipment.promotionSign.eq(promotionSign));
         }
         return shipmentRepository.findAll(predicate,pageable).map(serializableService::fromShipmentToShipmentDto);
     }

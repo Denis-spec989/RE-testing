@@ -1,5 +1,6 @@
 package github.denisspec989.retailexpertdemoservice.controller;
 
+import github.denisspec989.retailexpertdemoservice.entity.PromotionSign;
 import github.denisspec989.retailexpertdemoservice.model.price.PriceShortDto;
 import github.denisspec989.retailexpertdemoservice.model.shipment.ShipmentDto;
 import github.denisspec989.retailexpertdemoservice.service.ShipmentService;
@@ -21,7 +22,11 @@ import java.util.List;
 public class AnalysisController {
     private final ShipmentService shipmentService;
     @GetMapping("/shipment/day")
-    public ResponseEntity<Page<ShipmentDto>> getDailyShipmentsPaginatedAndFiltered(Pageable pageable, @RequestParam(required = false) List<String> groceryChainNames,@RequestParam(required = false) List<Long> productCodes,String date){
-        return new ResponseEntity<>(shipmentService.getShipmentsFilteredAndPaginated(pageable,groceryChainNames,productCodes,date), HttpStatus.valueOf(200));
+    public ResponseEntity<Page<ShipmentDto>> getDailyShipmentsPaginatedAndFiltered(Pageable pageable,
+                                                                                   @RequestParam(required = false) List<String> groceryChainNames,
+                                                                                   @RequestParam(required = false) List<Long> productCodes,
+                                                                                   @RequestParam(required = false) String date,
+                                                                                   @RequestParam(required = false)PromotionSign promotionSign){
+        return new ResponseEntity<>(shipmentService.getShipmentsFilteredAndPaginated(pageable,groceryChainNames,productCodes,date,promotionSign), HttpStatus.valueOf(200));
     }
 }

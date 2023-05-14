@@ -47,6 +47,7 @@ public class SerializableServiceImpl implements SerializableService {
     public ShipmentDto fromShipmentToShipmentDto(Shipment shipment) {
         ShipmentDto shipmentDto = new ShipmentDto();
         shipmentDto.setSalesValue(shipment.getSaleValue());
+        shipmentDto.setUnits(shipment.getUnits());
         shipmentDto.setDate(simpleDateFormat.format(shipment.getDate()));
         shipmentDto.setAddress(new AddressDto(shipment.getAddress()));
         shipmentDto.setPromotionSign(shipment.getPromotionSign());

@@ -15,5 +15,6 @@ public class ShipmentDto {
     private ShipmentProductDto product;
     private AddressDto address;
     private PromotionSign promotionSign;
+    private Long units;
     private Double salesValue;
 }
