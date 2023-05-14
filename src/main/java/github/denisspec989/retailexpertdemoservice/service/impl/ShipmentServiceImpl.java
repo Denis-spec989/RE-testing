@@ -4,7 +4,7 @@ import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.Predicate;
 import github.denisspec989.retailexpertdemoservice.entity.PromotionSign;
 import github.denisspec989.retailexpertdemoservice.entity.QShipment;
-import github.denisspec989.retailexpertdemoservice.model.shipment.ShipmentDto;
+import github.denisspec989.retailexpertdemoservice.model.shipment.ShipmentDayDto;
 import github.denisspec989.retailexpertdemoservice.repository.ShipmentRepository;
 import github.denisspec989.retailexpertdemoservice.service.SerializableService;
 import github.denisspec989.retailexpertdemoservice.service.ShipmentService;
@@ -29,7 +29,7 @@ public class ShipmentServiceImpl implements ShipmentService {
     @SneakyThrows
     @Override
     @Transactional
-    public Page<ShipmentDto> getShipmentsFilteredAndPaginated(Pageable pageable, List<String> groceryChainNames, List<Long> productCodes,String date, PromotionSign promotionSign) {
+    public Page<ShipmentDayDto> getShipmentsFilteredAndPaginated(Pageable pageable, List<String> groceryChainNames, List<Long> productCodes, String date, PromotionSign promotionSign) {
         BooleanBuilder predicate = new BooleanBuilder();
         if(!groceryChainNames.isEmpty()){
             List<Predicate> predicateTypes = new ArrayList<>();

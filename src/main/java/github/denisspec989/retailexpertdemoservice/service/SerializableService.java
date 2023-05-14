@@ -4,10 +4,10 @@ import github.denisspec989.retailexpertdemoservice.entity.Price;
 import github.denisspec989.retailexpertdemoservice.entity.Shipment;
 import github.denisspec989.retailexpertdemoservice.model.price.PriceDetailDto;
 import github.denisspec989.retailexpertdemoservice.model.price.PriceShortDto;
-import github.denisspec989.retailexpertdemoservice.model.shipment.ShipmentDto;
+import github.denisspec989.retailexpertdemoservice.model.shipment.ShipmentDayDto;
 
 public interface SerializableService {
     PriceShortDto fromPriceToPriceShortDto(Price price);
     Price fromPriceDetailDtoToPriceEntity(PriceDetailDto priceDetailDto);
-    ShipmentDto fromShipmentToShipmentDto(Shipment shipment);
+    ShipmentDayDto fromShipmentToShipmentDto(Shipment shipment);
 }

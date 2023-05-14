@@ -1,13 +1,12 @@
 package github.denisspec989.retailexpertdemoservice.service.impl;
 
 import github.denisspec989.retailexpertdemoservice.entity.Price;
-import github.denisspec989.retailexpertdemoservice.entity.Product;
 import github.denisspec989.retailexpertdemoservice.entity.Shipment;
 import github.denisspec989.retailexpertdemoservice.model.common.AddressDto;
 import github.denisspec989.retailexpertdemoservice.model.price.PriceDetailDto;
 import github.denisspec989.retailexpertdemoservice.model.price.PriceShortDto;
 import github.denisspec989.retailexpertdemoservice.model.shipment.ShipmentCustomerDto;
-import github.denisspec989.retailexpertdemoservice.model.shipment.ShipmentDto;
+import github.denisspec989.retailexpertdemoservice.model.shipment.ShipmentDayDto;
 import github.denisspec989.retailexpertdemoservice.model.shipment.ShipmentProductDto;
 import github.denisspec989.retailexpertdemoservice.service.CustomerService;
 import github.denisspec989.retailexpertdemoservice.service.ProductService;
@@ -44,15 +43,15 @@ public class SerializableServiceImpl implements SerializableService {
     }
 
     @Override
-    public ShipmentDto fromShipmentToShipmentDto(Shipment shipment) {
-        ShipmentDto shipmentDto = new ShipmentDto();
-        shipmentDto.setSalesValue(shipment.getSaleValue());
-        shipmentDto.setUnits(shipment.getUnits());
-        shipmentDto.setDate(simpleDateFormat.format(shipment.getDate()));
-        shipmentDto.setAddress(new AddressDto(shipment.getAddress()));
-        shipmentDto.setPromotionSign(shipment.getPromotionSign());
-        shipmentDto.setCustomer(new ShipmentCustomerDto(shipment.getCustomer()));
-        shipmentDto.setProduct(new ShipmentProductDto(shipment.getProduct()));
-        return shipmentDto;
+    public ShipmentDayDto fromShipmentToShipmentDto(Shipment shipment) {
+        ShipmentDayDto shipmentDayDto = new ShipmentDayDto();
+        shipmentDayDto.setSalesValue(shipment.getSaleValue());
+        shipmentDayDto.setUnits(shipment.getUnits());
+        shipmentDayDto.setDate(simpleDateFormat.format(shipment.getDate()));
+        shipmentDayDto.setAddress(new AddressDto(shipment.getAddress()));
+        shipmentDayDto.setPromotionSign(shipment.getPromotionSign());
+        shipmentDayDto.setCustomer(new ShipmentCustomerDto(shipment.getCustomer()));
+        shipmentDayDto.setProduct(new ShipmentProductDto(shipment.getProduct()));
+        return shipmentDayDto;
     }
 }
