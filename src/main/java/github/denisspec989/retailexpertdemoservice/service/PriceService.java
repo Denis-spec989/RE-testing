@@ -3,11 +3,13 @@ package github.denisspec989.retailexpertdemoservice.service;
 
 import github.denisspec989.retailexpertdemoservice.entity.Price;
 import github.denisspec989.retailexpertdemoservice.model.price.PriceDetailDto;
+import github.denisspec989.retailexpertdemoservice.model.price.PriceParsingDto;
 import github.denisspec989.retailexpertdemoservice.model.price.PriceShortDto;
 import github.denisspec989.retailexpertdemoservice.model.price.PriceUpdateDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
 import java.util.UUID;
 
 public interface PriceService {
@@ -16,5 +18,5 @@ public interface PriceService {
     PriceDetailDto createNewPrice(PriceDetailDto priceDetailDto);
     PriceDetailDto updatePrice(PriceUpdateDto priceUpdateDto);
     void deletePrice(UUID id);
-
+    void saveAllParsedPrices(List<PriceParsingDto> priceParsingDtos);
 }

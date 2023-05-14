@@ -10,4 +10,5 @@ import java.util.UUID;
 
 public interface ProductRepository extends JpaRepository<Product, UUID> {
     Optional<Product> findByCodeAndNameAndCategory(Long code, String name, ProductCategory productCategory);
+    Optional<Product> findByCode(Long code);
 }

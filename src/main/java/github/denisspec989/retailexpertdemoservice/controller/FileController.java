@@ -5,10 +5,7 @@ import github.denisspec989.retailexpertdemoservice.model.price.PriceParsingDto;
 import github.denisspec989.retailexpertdemoservice.model.product.ProductsParsingDto;
 import github.denisspec989.retailexpertdemoservice.model.shipment.ActualsParsingDto;
 import github.denisspec989.retailexpertdemoservice.model.common.CSV;
-import github.denisspec989.retailexpertdemoservice.service.CSVConverter;
-import github.denisspec989.retailexpertdemoservice.service.CustomerService;
-import github.denisspec989.retailexpertdemoservice.service.ProductService;
-import github.denisspec989.retailexpertdemoservice.service.SerializableCustomerService;
+import github.denisspec989.retailexpertdemoservice.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +25,7 @@ import java.util.function.Consumer;
 public class FileController {
     private final CustomerService customerService;
     private final ProductService productService;
+    private final PriceService priceService;
     private final SerializableCustomerService serializableCustomerService;
     private final CSVConverter csvConverter;
     @PostMapping(value = "/load/csv/actuals", consumes = "multipart/form-data")
@@ -45,9 +43,8 @@ public class FileController {
         });
     }
     @PostMapping(value = "/load/csv/prices", consumes = "multipart/form-data")
-    public ResponseEntity<List<PriceParsingDto>> loadCsvPrices(@RequestParam("file") MultipartFile file) throws IOException {
-        List<PriceParsingDto> prices =  csvConverter.convertPricesList(new CSV(file));
-        return new ResponseEntity<>(prices, HttpStatus.CREATED);
+    public void loadCsvPrices(@RequestParam("file") MultipartFile file) throws IOException {
+        priceService.saveAllParsedPrices(csvConverter.convertPricesList(new CSV(file)));
     }
     @PostMapping(value = "/load/csv/products", consumes = "multipart/form-data")
     public void loadCsvProducts(@RequestParam("file") MultipartFile file) throws IOException {

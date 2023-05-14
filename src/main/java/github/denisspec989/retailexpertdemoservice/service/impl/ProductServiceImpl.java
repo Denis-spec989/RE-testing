@@ -50,4 +50,9 @@ public class ProductServiceImpl implements ProductService {
         );
     }
 
+    @Override
+    public Optional<Product> getProductByCode(Long code) {
+        return productRepository.findByCode(code);
+    }
+
 }
