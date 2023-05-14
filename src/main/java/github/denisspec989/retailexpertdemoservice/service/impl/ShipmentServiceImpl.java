@@ -51,12 +51,12 @@ public class ShipmentServiceImpl implements ShipmentService {
         if(date==null){
             calendar.setTime(new Date());
             predicate.and(QShipment.shipment.date.year().eq(calendar.get(Calendar.YEAR)));
-            predicate.and(QShipment.shipment.date.month().eq(calendar.get(Calendar.MONTH)));
+            predicate.and(QShipment.shipment.date.month().eq(calendar.get(Calendar.MONTH)+1));
             predicate.and(QShipment.shipment.date.dayOfMonth().eq(calendar.get(Calendar.DAY_OF_MONTH)));
         } else {
             calendar.setTime(simpleDateFormat.parse(date));
             predicate.and(QShipment.shipment.date.year().eq(calendar.get(Calendar.YEAR)));
-            predicate.and(QShipment.shipment.date.month().eq(calendar.get(Calendar.MONTH)));
+            predicate.and(QShipment.shipment.date.month().eq(calendar.get(Calendar.MONTH)+1));
             predicate.and(QShipment.shipment.date.dayOfMonth().eq(calendar.get(Calendar.DAY_OF_MONTH)));
         }
         if(promotionSign!=null){
