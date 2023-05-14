@@ -11,4 +11,5 @@ public interface CustomerService {
     Customer getCustomerById(UUID id);
     void saveCustomer(Customer customer);
     Optional<Customer> getByGroceryChainName(String groceryChainName);
+    List<Customer> findAll();
 }

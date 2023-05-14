@@ -32,8 +32,15 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    @Transactional
     public Optional<Customer> getByGroceryChainName(String groceryChainName) {
         return customerRepository.findByGroceryChainName(groceryChainName);
+    }
+
+    @Override
+    @Transactional
+    public List<Customer> findAll() {
+        return customerRepository.findAll();
     }
 
 }

@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.function.Supplier;
 
 @Service
@@ -27,5 +28,11 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
                 return productCategoryRepository.save(productCategory);
             }
         });
+    }
+
+    @Override
+    @Transactional
+    public List<ProductCategory> findAll() {
+        return productCategoryRepository.findAll();
     }
 }

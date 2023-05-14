@@ -1,7 +1,9 @@
 package github.denisspec989.retailexpertdemoservice.controller;
 
 import github.denisspec989.retailexpertdemoservice.entity.PromotionSign;
+import github.denisspec989.retailexpertdemoservice.model.product.ProductSalesMonthlyDto;
 import github.denisspec989.retailexpertdemoservice.model.shipment.ShipmentDayDto;
+import github.denisspec989.retailexpertdemoservice.service.ProductService;
 import github.denisspec989.retailexpertdemoservice.service.ShipmentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -20,6 +22,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AnalysisController {
     private final ShipmentService shipmentService;
+    private final ProductService productService;
     @GetMapping("/shipment/day")
     public ResponseEntity<Page<ShipmentDayDto>> getDailyShipmentsPaginatedAndFiltered(Pageable pageable,
                                                                                       @RequestParam(required = false) List<String> groceryChainNames,
@@ -27,5 +30,9 @@ public class AnalysisController {
                                                                                       @RequestParam(required = false) String date,
                                                                                       @RequestParam(required = false)PromotionSign promotionSign){
         return new ResponseEntity<>(shipmentService.getShipmentsFilteredAndPaginated(pageable,groceryChainNames,productCodes,date,promotionSign), HttpStatus.valueOf(200));
+    }
+    @GetMapping("/shipment/monthly")
+    public ResponseEntity<List<ProductSalesMonthlyDto>> getShipmentsGrouped(){
+        return new ResponseEntity<>(productService.getProductsAnalytics(),HttpStatus.OK);
     }
 }

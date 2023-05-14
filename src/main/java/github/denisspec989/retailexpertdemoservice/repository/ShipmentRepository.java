@@ -8,10 +8,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
 public interface ShipmentRepository extends JpaRepository<Shipment, UUID>, QuerydslPredicateExecutor<Shipment> {
     Optional<Shipment> findByDateAndSaleValueAndUnitsAndProductAndAddressAndCustomer(Date date, Double saleValue, Long units, Product product, Address address, Customer customer);
-
+    List<Shipment> findAllByCustomerAndProductIn(Customer customer, List<Product> productList);
 }
