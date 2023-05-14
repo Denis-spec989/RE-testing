@@ -25,7 +25,7 @@ public class Address {
     )
     private UUID id;
     private String value; // Ship to name
-    private String code; // Ship to Code
+    private Long code; // Ship to Code
     @ManyToMany(mappedBy = "addresses")
     private List<Customer> customer;
 }

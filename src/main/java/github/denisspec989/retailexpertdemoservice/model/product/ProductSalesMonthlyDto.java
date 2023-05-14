@@ -1,4 +1,4 @@
-package github.denisspec989.retailexpertdemoservice.model.sales;
+package github.denisspec989.retailexpertdemoservice.model.product;
 
 import github.denisspec989.retailexpertdemoservice.model.common.ProductCategoryDto;
 import github.denisspec989.retailexpertdemoservice.model.shipment.ShipmentCustomerDto;

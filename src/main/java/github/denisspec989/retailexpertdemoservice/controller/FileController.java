@@ -1,6 +1,9 @@
 package github.denisspec989.retailexpertdemoservice.controller;
 
-import github.denisspec989.retailexpertdemoservice.model.common.ActualsDto;
+import github.denisspec989.retailexpertdemoservice.model.customer.CustomersParsingDto;
+import github.denisspec989.retailexpertdemoservice.model.price.PriceParsingDto;
+import github.denisspec989.retailexpertdemoservice.model.product.ProductsParsingDto;
+import github.denisspec989.retailexpertdemoservice.model.shipment.ActualsParsingDto;
 import github.denisspec989.retailexpertdemoservice.model.common.CSV;
 import github.denisspec989.retailexpertdemoservice.service.CSVConverter;
 import lombok.RequiredArgsConstructor;
@@ -21,8 +24,23 @@ import java.util.List;
 public class FileController {
     private final CSVConverter csvConverter;
     @PostMapping(value = "/load/csv/actuals", consumes = "multipart/form-data")
-    public ResponseEntity<List<ActualsDto>> loadCsv(@RequestParam("file") MultipartFile file) throws IOException {
-        List<ActualsDto> actuals =  csvConverter.convertActualsList(new CSV(file));
+    public ResponseEntity<List<ActualsParsingDto>> loadCsvActuals(@RequestParam("file") MultipartFile file) throws IOException {
+        List<ActualsParsingDto> actuals =  csvConverter.convertActualsList(new CSV(file));
         return new ResponseEntity<>(actuals, HttpStatus.CREATED);
+    }
+    @PostMapping(value = "/load/csv/customers", consumes = "multipart/form-data")
+    public ResponseEntity<List<CustomersParsingDto>> loadCsvCustomers(@RequestParam("file") MultipartFile file) throws IOException {
+        List<CustomersParsingDto> customers =  csvConverter.convertCustomersList(new CSV(file));
+        return new ResponseEntity<>(customers, HttpStatus.CREATED);
+    }
+    @PostMapping(value = "/load/csv/prices", consumes = "multipart/form-data")
+    public ResponseEntity<List<PriceParsingDto>> loadCsvPrices(@RequestParam("file") MultipartFile file) throws IOException {
+        List<PriceParsingDto> prices =  csvConverter.convertPricesList(new CSV(file));
+        return new ResponseEntity<>(prices, HttpStatus.CREATED);
+    }
+    @PostMapping(value = "/load/csv/products", consumes = "multipart/form-data")
+    public ResponseEntity<List<ProductsParsingDto>> loadCsvProducts(@RequestParam("file") MultipartFile file) throws IOException {
+        List<ProductsParsingDto> products =  csvConverter.convertProductsList(new CSV(file));
+        return new ResponseEntity<>(products, HttpStatus.CREATED);
     }
 }

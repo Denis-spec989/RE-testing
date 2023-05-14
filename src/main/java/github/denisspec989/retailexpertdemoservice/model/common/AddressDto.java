@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AddressDto {
     private String value;
-    private String code;
+    private Long code;
     public AddressDto(Address address){
         this.value=address.getValue();
         this.code=address.getCode();
