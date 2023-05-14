@@ -6,7 +6,7 @@ import github.denisspec989.retailexpertdemoservice.entity.PromotionSign;
 import github.denisspec989.retailexpertdemoservice.entity.QShipment;
 import github.denisspec989.retailexpertdemoservice.model.shipment.ShipmentDayDto;
 import github.denisspec989.retailexpertdemoservice.repository.ShipmentRepository;
-import github.denisspec989.retailexpertdemoservice.service.SerializableService;
+import github.denisspec989.retailexpertdemoservice.service.SerializablePriceService;
 import github.denisspec989.retailexpertdemoservice.service.ShipmentService;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
@@ -24,7 +24,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ShipmentServiceImpl implements ShipmentService {
     private final ShipmentRepository shipmentRepository;
-    private final SerializableService serializableService;
+    private final SerializablePriceService serializablePriceService;
     private static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
     @SneakyThrows
     @Override
@@ -60,6 +60,6 @@ public class ShipmentServiceImpl implements ShipmentService {
         if(promotionSign!=null){
             predicate.and(QShipment.shipment.promotionSign.eq(promotionSign));
         }
-        return shipmentRepository.findAll(predicate,pageable).map(serializableService::fromShipmentToShipmentDto);
+        return shipmentRepository.findAll(predicate,pageable).map(serializablePriceService::fromShipmentToShipmentDto);
     }
 }

@@ -1,26 +1,35 @@
 package github.denisspec989.retailexpertdemoservice.service.impl;
 
+import github.denisspec989.retailexpertdemoservice.entity.Address;
+import github.denisspec989.retailexpertdemoservice.entity.Customer;
 import github.denisspec989.retailexpertdemoservice.entity.Price;
 import github.denisspec989.retailexpertdemoservice.entity.Shipment;
 import github.denisspec989.retailexpertdemoservice.model.common.AddressDto;
+import github.denisspec989.retailexpertdemoservice.model.customer.CustomersParsingDto;
 import github.denisspec989.retailexpertdemoservice.model.price.PriceDetailDto;
 import github.denisspec989.retailexpertdemoservice.model.price.PriceShortDto;
 import github.denisspec989.retailexpertdemoservice.model.shipment.ShipmentCustomerDto;
 import github.denisspec989.retailexpertdemoservice.model.shipment.ShipmentDayDto;
 import github.denisspec989.retailexpertdemoservice.model.shipment.ShipmentProductDto;
+import github.denisspec989.retailexpertdemoservice.repository.CustomerRepository;
+import github.denisspec989.retailexpertdemoservice.service.AddressService;
 import github.denisspec989.retailexpertdemoservice.service.CustomerService;
 import github.denisspec989.retailexpertdemoservice.service.ProductService;
-import github.denisspec989.retailexpertdemoservice.service.SerializableService;
+import github.denisspec989.retailexpertdemoservice.service.SerializablePriceService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class SerializableServiceImpl implements SerializableService {
+public class SerializablePriceServiceImpl implements SerializablePriceService {
     private final CustomerService customerService;
     private final ProductService productService;
+    private final AddressService addressService;
     private static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
     @Override
     public PriceShortDto fromPriceToPriceShortDto(Price price) {
@@ -54,4 +63,6 @@ public class SerializableServiceImpl implements SerializableService {
         shipmentDayDto.setProduct(new ShipmentProductDto(shipment.getProduct()));
         return shipmentDayDto;
     }
+
+
 }

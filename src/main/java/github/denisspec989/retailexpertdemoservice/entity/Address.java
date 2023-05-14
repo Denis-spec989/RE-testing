@@ -6,6 +6,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 @Entity
@@ -28,4 +29,17 @@ public class Address {
     private Long code; // Ship to Code
     @ManyToMany(mappedBy = "addresses")
     private List<Customer> customer;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Address)) return false;
+        Address address = (Address) o;
+        return Objects.equals(getValue(), address.getValue()) && Objects.equals(getCode(), address.getCode());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getValue(), getCode());
+    }
 }

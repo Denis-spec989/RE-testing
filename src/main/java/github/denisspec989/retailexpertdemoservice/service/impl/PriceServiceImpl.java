@@ -6,7 +6,7 @@ import github.denisspec989.retailexpertdemoservice.model.price.PriceShortDto;
 import github.denisspec989.retailexpertdemoservice.model.price.PriceUpdateDto;
 import github.denisspec989.retailexpertdemoservice.repository.PriceRepository;
 import github.denisspec989.retailexpertdemoservice.service.PriceService;
-import github.denisspec989.retailexpertdemoservice.service.SerializableService;
+import github.denisspec989.retailexpertdemoservice.service.SerializablePriceService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,11 +19,11 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class PriceServiceImpl implements PriceService {
     private final PriceRepository priceRepository;
-    private final SerializableService serializableService;
+    private final SerializablePriceService serializablePriceService;
     @Override
     @Transactional
     public Page<PriceShortDto> getPricesPaginated(Pageable pageable) {
-        return priceRepository.findAll(pageable).map(serializableService::fromPriceToPriceShortDto);
+        return priceRepository.findAll(pageable).map(serializablePriceService::fromPriceToPriceShortDto);
     }
 
     @Override
@@ -35,7 +35,7 @@ public class PriceServiceImpl implements PriceService {
     @Override
     @Transactional
     public PriceDetailDto createNewPrice(PriceDetailDto priceDetailDto) {
-        return new PriceDetailDto(priceRepository.save(serializableService.fromPriceDetailDtoToPriceEntity(priceDetailDto)));
+        return new PriceDetailDto(priceRepository.save(serializablePriceService.fromPriceDetailDtoToPriceEntity(priceDetailDto)));
     }
 
     @Override
