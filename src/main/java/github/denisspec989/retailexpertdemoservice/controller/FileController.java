@@ -26,12 +26,12 @@ public class FileController {
     private final CustomerService customerService;
     private final ProductService productService;
     private final PriceService priceService;
+    private final ShipmentService shipmentService;
     private final SerializableCustomerService serializableCustomerService;
     private final CSVConverter csvConverter;
     @PostMapping(value = "/load/csv/actuals", consumes = "multipart/form-data")
-    public ResponseEntity<List<ActualsParsingDto>> loadCsvActuals(@RequestParam("file") MultipartFile file) throws IOException {
-        List<ActualsParsingDto> actuals =  csvConverter.convertActualsList(new CSV(file));
-        return new ResponseEntity<>(actuals, HttpStatus.CREATED);
+    public void loadCsvActuals(@RequestParam("file") MultipartFile file) throws IOException {
+        shipmentService.saveAllParsedShipments(csvConverter.convertActualsList(new CSV(file)));
     }
     @PostMapping(value = "/load/csv/customers", consumes = "multipart/form-data")
     public void loadCsvCustomers(@RequestParam("file") MultipartFile file) {

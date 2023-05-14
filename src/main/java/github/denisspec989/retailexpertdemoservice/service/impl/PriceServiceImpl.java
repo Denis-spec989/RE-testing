@@ -88,4 +88,10 @@ public class PriceServiceImpl implements PriceService {
         }).filter(entity->entity!=null).collect(Collectors.toList()));
     }
 
+    @Override
+    @Transactional
+    public Optional<Price> getPriceByCustomerAndProduct(Customer customer, Product product) {
+        return priceRepository.findByCustomerAndProduct(customer,product);
+    }
+
 }

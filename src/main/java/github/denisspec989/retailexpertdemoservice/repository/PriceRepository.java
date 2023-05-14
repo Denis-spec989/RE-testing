@@ -10,4 +10,5 @@ import java.util.UUID;
 
 public interface PriceRepository extends JpaRepository<Price, UUID> {
     Optional<Price> findByCustomerAndProductAndRegularPrice(Customer customer, Product product, Double regularPrice);
+    Optional<Price> findByCustomerAndProduct(Customer customer,Product product);
 }
