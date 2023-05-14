@@ -27,6 +27,8 @@ public class Shipment {
     private Date date; // Date
     private Double saleValue; // Actual Sales Value
     private Long units; // Volume, units
+    @Enumerated(value = EnumType.STRING)
+    private PromotionSign promotionSign;
     @OneToOne
     private Product product;
     @OneToOne
