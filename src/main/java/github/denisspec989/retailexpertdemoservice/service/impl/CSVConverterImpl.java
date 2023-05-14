@@ -1,6 +1,7 @@
 package github.denisspec989.retailexpertdemoservice.service.impl;
 
 import github.denisspec989.retailexpertdemoservice.model.common.AddressDto;
+import github.denisspec989.retailexpertdemoservice.model.common.ProductCategoryDto;
 import github.denisspec989.retailexpertdemoservice.model.customer.CustomersParsingDto;
 import github.denisspec989.retailexpertdemoservice.model.price.PriceParsingDto;
 import github.denisspec989.retailexpertdemoservice.model.product.ProductsParsingDto;
@@ -57,8 +58,10 @@ public class CSVConverterImpl implements CSVConverter {
                 ProductsParsingDto product = new ProductsParsingDto();
                 product.setNumber(Long.parseLong(csvRecord.get("Material_No").trim()));
                 product.setName(csvRecord.get("Material_Desc_RUS").trim());
-                product.setCategoryCode(Long.parseLong(csvRecord.get("L3_Product_Category_Code").trim()));
-                product.setCategoryName(csvRecord.get("L3_Product_Category_Name").trim());
+                ProductCategoryDto productCategoryDto = new ProductCategoryDto();
+                productCategoryDto.setCode(Long.parseLong(csvRecord.get("L3_Product_Category_Code").trim()));
+                productCategoryDto.setName(csvRecord.get("L3_Product_Category_Name").trim());
+                product.setCategory(productCategoryDto);
                 products.add(product);
             }
             return products;

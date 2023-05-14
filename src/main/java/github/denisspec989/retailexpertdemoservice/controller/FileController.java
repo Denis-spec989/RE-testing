@@ -7,6 +7,7 @@ import github.denisspec989.retailexpertdemoservice.model.shipment.ActualsParsing
 import github.denisspec989.retailexpertdemoservice.model.common.CSV;
 import github.denisspec989.retailexpertdemoservice.service.CSVConverter;
 import github.denisspec989.retailexpertdemoservice.service.CustomerService;
+import github.denisspec989.retailexpertdemoservice.service.ProductService;
 import github.denisspec989.retailexpertdemoservice.service.SerializableCustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -26,6 +27,7 @@ import java.util.function.Consumer;
 @RequiredArgsConstructor
 public class FileController {
     private final CustomerService customerService;
+    private final ProductService productService;
     private final SerializableCustomerService serializableCustomerService;
     private final CSVConverter csvConverter;
     @PostMapping(value = "/load/csv/actuals", consumes = "multipart/form-data")
@@ -48,8 +50,7 @@ public class FileController {
         return new ResponseEntity<>(prices, HttpStatus.CREATED);
     }
     @PostMapping(value = "/load/csv/products", consumes = "multipart/form-data")
-    public ResponseEntity<List<ProductsParsingDto>> loadCsvProducts(@RequestParam("file") MultipartFile file) throws IOException {
-        List<ProductsParsingDto> products =  csvConverter.convertProductsList(new CSV(file));
-        return new ResponseEntity<>(products, HttpStatus.CREATED);
+    public void loadCsvProducts(@RequestParam("file") MultipartFile file) throws IOException {
+        productService.saveAllParsedProducts( csvConverter.convertProductsList(new CSV(file)));
     }
 }

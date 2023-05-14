@@ -29,7 +29,6 @@ import java.util.Optional;
 public class SerializablePriceServiceImpl implements SerializablePriceService {
     private final CustomerService customerService;
     private final ProductService productService;
-    private final AddressService addressService;
     private static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
     @Override
     public PriceShortDto fromPriceToPriceShortDto(Price price) {
