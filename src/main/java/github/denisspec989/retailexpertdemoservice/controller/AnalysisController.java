@@ -32,7 +32,7 @@ public class AnalysisController {
         return new ResponseEntity<>(shipmentService.getShipmentsFilteredAndPaginated(pageable,groceryChainNames,productCodes,date,promotionSign), HttpStatus.valueOf(200));
     }
     @GetMapping("/shipment/monthly")
-    public ResponseEntity<List<ProductSalesMonthlyDto>> getShipmentsGrouped(){
-        return new ResponseEntity<>(productService.getProductsAnalytics(),HttpStatus.OK);
+    public ResponseEntity<List<ProductSalesMonthlyDto>> getShipmentsGrouped(@RequestParam("year")Integer year,@RequestParam("month") Integer month){
+        return new ResponseEntity<>(productService.getProductsAnalytics(year,month),HttpStatus.OK);
     }
 }

@@ -12,5 +12,5 @@ public interface ProductService {
     Product getProductById(UUID id);
     void saveAllParsedProducts(List<ProductsParsingDto> productsParsingDtos);
     Optional<Product> getProductByCode(Long code);
-    List<ProductSalesMonthlyDto> getProductsAnalytics();
+    List<ProductSalesMonthlyDto> getProductsAnalytics(Integer year, Integer month);
 }

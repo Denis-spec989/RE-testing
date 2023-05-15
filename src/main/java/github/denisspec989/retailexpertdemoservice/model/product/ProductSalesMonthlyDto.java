@@ -16,13 +16,15 @@ import java.time.Month;
 public class ProductSalesMonthlyDto {
     private ShipmentCustomerDto customer;
     private ProductCategoryDto category;
-    private Month month;
+    private Integer year;
+    private Integer month;
     private Long unitsSoldByRegularPrice;
     private Long unitsSoldByPromoPrice;
     private Double promoPercent;
-    public ProductSalesMonthlyDto(String groceryChainName, ProductCategory productCategory,Month month,Long unitsSoldByRegularPrice,Long unitsSoldByPromoPrice,Double promoPercent){
+    public ProductSalesMonthlyDto(String groceryChainName, ProductCategory productCategory,Integer year,Integer month,Long unitsSoldByRegularPrice,Long unitsSoldByPromoPrice,Double promoPercent){
         this.customer=new ShipmentCustomerDto(groceryChainName);
         this.category=new ProductCategoryDto(productCategory);
+        this.year=year;
         this.month=month;
         this.unitsSoldByRegularPrice=unitsSoldByRegularPrice;
         this.unitsSoldByPromoPrice=unitsSoldByPromoPrice;
