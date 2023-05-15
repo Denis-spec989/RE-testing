@@ -21,4 +21,5 @@
 https://drive.google.com/drive/folders/1YD3kDIKRlitBnYpm6X2pAyNrpTaqcw6i?usp=sharing
 
 # Системное тестирование
-Коллекцию постман для запросов также  находится в гугл диске. 
+Коллекция постман для запросов также  находится в гугл диске. 
+После запуска проекта можно посмотреть сваггер - http://localhost:8087/swagger-ui/index.html .
