@@ -2,21 +2,12 @@ package github.denisspec989.retailexpertdemoservice.service.impl;
 
 import github.denisspec989.retailexpertdemoservice.entity.Address;
 import github.denisspec989.retailexpertdemoservice.entity.Customer;
-import github.denisspec989.retailexpertdemoservice.entity.Price;
-import github.denisspec989.retailexpertdemoservice.entity.Shipment;
-import github.denisspec989.retailexpertdemoservice.model.common.AddressDto;
 import github.denisspec989.retailexpertdemoservice.model.customer.CustomersParsingDto;
-import github.denisspec989.retailexpertdemoservice.model.price.PriceDetailDto;
-import github.denisspec989.retailexpertdemoservice.model.price.PriceShortDto;
-import github.denisspec989.retailexpertdemoservice.model.shipment.ShipmentCustomerDto;
-import github.denisspec989.retailexpertdemoservice.model.shipment.ShipmentDayDto;
-import github.denisspec989.retailexpertdemoservice.model.shipment.ShipmentProductDto;
 import github.denisspec989.retailexpertdemoservice.repository.CustomerRepository;
 import github.denisspec989.retailexpertdemoservice.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;

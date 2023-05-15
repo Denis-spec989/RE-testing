@@ -1,7 +1,6 @@
-package github.denisspec989.retailexpertdemoservice.model.shipment;
+package github.denisspec989.retailexpertdemoservice.model.customer;
 
 import github.denisspec989.retailexpertdemoservice.entity.Customer;
-import github.denisspec989.retailexpertdemoservice.entity.Shipment;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,9 +8,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ShipmentCustomerDto {
+public class CustomerWithoutIdDto {
     private String groceryChainName;
-    public ShipmentCustomerDto(Customer customer){
+    public CustomerWithoutIdDto(Customer customer){
         this.groceryChainName=customer.getGroceryChainName();
     }
 }

@@ -1,4 +1,4 @@
-package github.denisspec989.retailexpertdemoservice.model.shipment;
+package github.denisspec989.retailexpertdemoservice.model.product;
 
 import github.denisspec989.retailexpertdemoservice.entity.Product;
 import github.denisspec989.retailexpertdemoservice.model.common.ProductCategoryDto;
@@ -9,11 +9,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ShipmentProductDto {
+public class ProductWithCategoryDto {
     private Long code;
     private String name;
     private ProductCategoryDto category;
-    public ShipmentProductDto(Product product){
+    public ProductWithCategoryDto(Product product){
         this.code=product.getCode();
         this.name=product.getName();
         this.category=new ProductCategoryDto(product.getCategory());

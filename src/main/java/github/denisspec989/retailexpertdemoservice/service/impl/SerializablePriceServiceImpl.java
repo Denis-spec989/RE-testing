@@ -1,18 +1,13 @@
 package github.denisspec989.retailexpertdemoservice.service.impl;
 
-import github.denisspec989.retailexpertdemoservice.entity.Address;
-import github.denisspec989.retailexpertdemoservice.entity.Customer;
 import github.denisspec989.retailexpertdemoservice.entity.Price;
 import github.denisspec989.retailexpertdemoservice.entity.Shipment;
 import github.denisspec989.retailexpertdemoservice.model.common.AddressDto;
-import github.denisspec989.retailexpertdemoservice.model.customer.CustomersParsingDto;
 import github.denisspec989.retailexpertdemoservice.model.price.PriceDetailDto;
 import github.denisspec989.retailexpertdemoservice.model.price.PriceShortDto;
-import github.denisspec989.retailexpertdemoservice.model.shipment.ShipmentCustomerDto;
+import github.denisspec989.retailexpertdemoservice.model.customer.CustomerWithoutIdDto;
 import github.denisspec989.retailexpertdemoservice.model.shipment.ShipmentDayDto;
-import github.denisspec989.retailexpertdemoservice.model.shipment.ShipmentProductDto;
-import github.denisspec989.retailexpertdemoservice.repository.CustomerRepository;
-import github.denisspec989.retailexpertdemoservice.service.AddressService;
+import github.denisspec989.retailexpertdemoservice.model.product.ProductWithCategoryDto;
 import github.denisspec989.retailexpertdemoservice.service.CustomerService;
 import github.denisspec989.retailexpertdemoservice.service.ProductService;
 import github.denisspec989.retailexpertdemoservice.service.SerializablePriceService;
@@ -20,9 +15,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -58,8 +50,8 @@ public class SerializablePriceServiceImpl implements SerializablePriceService {
         shipmentDayDto.setDate(simpleDateFormat.format(shipment.getDate()));
         shipmentDayDto.setAddress(new AddressDto(shipment.getAddress()));
         shipmentDayDto.setPromotionSign(shipment.getPromotionSign());
-        shipmentDayDto.setCustomer(new ShipmentCustomerDto(shipment.getCustomer()));
-        shipmentDayDto.setProduct(new ShipmentProductDto(shipment.getProduct()));
+        shipmentDayDto.setCustomer(new CustomerWithoutIdDto(shipment.getCustomer()));
+        shipmentDayDto.setProduct(new ProductWithCategoryDto(shipment.getProduct()));
         return shipmentDayDto;
     }
 

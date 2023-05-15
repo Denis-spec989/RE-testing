@@ -1,4 +1,4 @@
-package github.denisspec989.retailexpertdemoservice.model.price;
+package github.denisspec989.retailexpertdemoservice.model.product;
 
 import github.denisspec989.retailexpertdemoservice.entity.Product;
 import lombok.AllArgsConstructor;
@@ -13,11 +13,11 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class PriceProductDto {
+public class ProductWithoutCategoryDto {
     @NotNull
     private UUID id;
     private String name;
-    public PriceProductDto (Product product){
+    public ProductWithoutCategoryDto(Product product){
         this.id=product.getId();
         this.name=product.getName();
     }
